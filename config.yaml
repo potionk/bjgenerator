@@ -1,3 +1,6 @@
-# 생성할 위치를 입력해주세요.
+# 백준, java 프로젝트 위치를 입력해주세요.
 # ex) /Users/potion/baekjoon/src
 srcRoute: /Users/potion/baekjoon/src
+
+# 프로그래머스, javascript 프로젝트 위치를 입력해주세요
+prgJSRoute: /Users/potion/PTDev/intellij_project/programmers/javascript

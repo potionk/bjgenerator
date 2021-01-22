@@ -9,6 +9,7 @@ import java.io.IOException;
 public class Config {
     public static final Config config = fromFile("config.yaml");
     public Object srcRoute;
+    public Object prgJSRoute;
 
     private static Config fromFile(String filename) {
         try {
