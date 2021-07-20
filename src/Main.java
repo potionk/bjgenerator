@@ -8,9 +8,13 @@ public class Main {
     // args[0] => 백준 문제 번호
     public static void main(String[] args) {
         Config config = Config.config;
-        String info = "bj" + args[0];
+        if (config == null) {
+            System.out.println("read config.yaml error");
+            return;
+        }
+        String info = config.packageName + args[0];
         String path = info;
-        if (config != null && config.srcRoute != null) {
+        if (config.srcRoute != null) {
             path = config.srcRoute + "/" + path;
         }
         File folder = new File(path);
@@ -20,6 +24,7 @@ public class Main {
                 BufferedWriter fw = new BufferedWriter(new FileWriter(path + "/Main.java", true));
                 fw.write("package " + info + ";\n" +
                         "\n" +
+                        applyLineBreaking(config.comment) +
                         "import java.io.*;\n" +
                         "\n" +
                         "public class Main {\n" +
@@ -34,10 +39,14 @@ public class Main {
                 fw.close();
                 System.out.println(args[0] + "번 문제 파일이 생성되었습니다.");
             } catch (Exception e) {
-                System.out.println("config.yaml의 경로를 확인해주세요.");
+                e.printStackTrace();
             }
         } else {
             System.out.println("이미 생성되었습니다.");
         }
+    }
+
+    public static String applyLineBreaking(Object s) {
+        return ((String) s).replace("\\n", "\n");
     }
 }

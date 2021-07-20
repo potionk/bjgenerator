@@ -10,6 +10,8 @@ public class Config {
     public static final Config config = fromFile("config.yaml");
     public Object srcRoute;
     public Object prgJSRoute;
+    public Object packageName;
+    public Object comment;
 
     private static Config fromFile(String filename) {
         try {
