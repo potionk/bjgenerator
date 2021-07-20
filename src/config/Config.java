@@ -18,6 +18,12 @@ public class Config {
             YamlReader reader = new YamlReader(new FileReader(filename));
             Config config = reader.read(Config.class);
             reader.close();
+            if (config.packageName == null) {
+                config.packageName = "";
+            }
+            if (config.comment == null) {
+                config.comment = "";
+            }
             return config;
         } catch (FileNotFoundException e) {
             String message = filename + " 파일을 읽을 수 없습니다.\n" + e.getMessage();

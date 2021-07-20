@@ -1,16 +1,25 @@
-package programmers.js;
+package generator.programmers.js;
 
 import config.Config;
+import generator.Generator;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public class Main {
-    public static void main(String[] args) {
+public class PGJSGenerator implements Generator {
+    @Override
+    public boolean generate(Object problemInfo) {
         Config config = Config.config;
+        String[] args;
+        try {
+            args = (String[]) problemInfo;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
         StringBuilder sb = new StringBuilder();
         int len = args.length;
-        for (int i = 0; i < len; i++) {
+        for (int i = 1; i < len; i++) {
             sb.append(args[i]);
             if (i != len - 1) {
                 sb.append("_");
@@ -18,9 +27,9 @@ public class Main {
         }
         sb.append(".js");
         String fileName = sb.toString();
-        String path = "/";
-        if (config != null && config.prgJSRoute != null) {
-            path = config.prgJSRoute + path;
+        String path = (String) config.prgJSRoute;
+        if(path.charAt(path.length()-1)!='/'){
+            path+="/";
         }
         try {
             BufferedWriter fw = new BufferedWriter(new FileWriter(path + "test.html"));
@@ -44,8 +53,10 @@ public class Main {
             fw.flush();
             fw.close();
             System.out.println(fileName + " 파일이 생성되었습니다.");
+            return true;
         } catch (Exception e) {
-            System.out.println("config.yaml의 경로를 확인해주세요.");
+            System.out.println("config.yaml파일의 prgJSRoute를 확인해주세요.");
+            return false;
         }
     }
 }
