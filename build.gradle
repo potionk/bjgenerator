@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.potion'
+version '1.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'com.esotericsoftware.yamlbeans', name: 'yamlbeans', version: '1.15'
+}

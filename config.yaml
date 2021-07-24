@@ -1,8 +1,10 @@
 # 백준, java 프로젝트 위치를 입력해주세요.
 # ex) /Users/potion/baekjoon/src
 srcRoute: /Users/potion/PTDev/intellij_Project/baekjoon/src
-packageName: ex
-comment: /*\n문제 이름:\n알고리즘:\n자료구조:\n*/\n\n
+packageName: bj
+# \n으로 줄 바꿈 표시 가능
+# ex) /*\n문제 이름:\n알고리즘:\n*/\n\n
+comment:
 
 # 프로그래머스, javascript 프로젝트 위치를 입력해주세요
 prgJSRoute: /Users/potion/PTDev/intellij_project/programmers/javascript
